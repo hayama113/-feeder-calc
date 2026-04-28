@@ -1,0 +1,47 @@
+[
+  {
+    "id": "redline",
+    "name": "Redline Corse",
+    "main": "#d71920",
+    "sub": "#090909",
+    "accent": "#ffffff",
+    "perf": 1,
+    "style": "Attack"
+  },
+  {
+    "id": "argent",
+    "name": "Argent Works",
+    "main": "#c8c8c8",
+    "sub": "#0b0b0f",
+    "accent": "#00c8ff",
+    "perf": 1,
+    "style": "Stable"
+  },
+  {
+    "id": "papaya",
+    "name": "Papaya Sprint",
+    "main": "#ff8c1a",
+    "sub": "#1a1a1d",
+    "accent": "#2d7dff",
+    "perf": 0,
+    "style": "Balanced"
+  },
+  {
+    "id": "emerald",
+    "name": "Emerald GP",
+    "main": "#008f5a",
+    "sub": "#0a0a0a",
+    "accent": "#b6ff00",
+    "perf": 0,
+    "style": "Defensive"
+  },
+  {
+    "id": "cobalt",
+    "name": "Cobalt Racing",
+    "main": "#1565ff",
+    "sub": "#1b1b22",
+    "accent": "#d0d5dc",
+    "perf": -1,
+    "style": "Aggressive"
+  }
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "final_proto",
+    "name": "Final Prototype Circuit",
+    "distance": 80,
+    "corners": 12,
+    "abcZones": 2,
+    "pitEntries": 1,
+    "type": "balanced",
+    "weatherOptions": [
+      "dry",
+      "damp",
+      "light_rain"
+    ]
+  }
+]
