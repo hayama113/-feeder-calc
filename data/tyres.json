@@ -1,0 +1,68 @@
+[
+  {
+    "id": "ss",
+    "name": "Super Soft",
+    "abbr": "SS",
+    "icon": "⚡",
+    "color": "#ff4fc3",
+    "dryMod": 1.08,
+    "wetMod": 0.85,
+    "wear": 8,
+    "warmup": 3
+  },
+  {
+    "id": "s",
+    "name": "Soft",
+    "abbr": "S",
+    "icon": "🔥",
+    "color": "#e03131",
+    "dryMod": 1.05,
+    "wetMod": 0.88,
+    "wear": 6,
+    "warmup": 5
+  },
+  {
+    "id": "m",
+    "name": "Medium",
+    "abbr": "M",
+    "icon": "●",
+    "color": "#ffd43b",
+    "dryMod": 1.02,
+    "wetMod": 0.9,
+    "wear": 4,
+    "warmup": 8
+  },
+  {
+    "id": "h",
+    "name": "Hard",
+    "abbr": "H",
+    "icon": "🛡️",
+    "color": "#339af0",
+    "dryMod": 0.99,
+    "wetMod": 0.92,
+    "wear": 2.5,
+    "warmup": 12
+  },
+  {
+    "id": "i",
+    "name": "Intermediate",
+    "abbr": "I",
+    "icon": "💧",
+    "color": "#51cf66",
+    "dryMod": 0.96,
+    "wetMod": 1.03,
+    "wear": 3.5,
+    "warmup": 8
+  },
+  {
+    "id": "r",
+    "name": "Rain",
+    "abbr": "R",
+    "icon": "☔",
+    "color": "#845ef7",
+    "dryMod": 0.88,
+    "wetMod": 1.05,
+    "wear": 3,
+    "warmup": 10
+  }
+]
