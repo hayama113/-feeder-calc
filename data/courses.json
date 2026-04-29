@@ -1,0 +1,17 @@
+[
+  {
+    "id": "suzuka_reference",
+    "name": "Suzuka Reference Circuit",
+    "distance": 108,
+    "corners": 18,
+    "abcZones": 2,
+    "pitEntries": 1,
+    "type": "figure_eight_technical",
+    "reference": "Suzuka-style figure-eight layout with S curves, Degner, Hairpin, Spoon, 130R and final chicane elements.",
+    "weatherOptions": [
+      "dry",
+      "damp",
+      "light_rain"
+    ]
+  }
+]
