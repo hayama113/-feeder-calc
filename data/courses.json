@@ -1,0 +1,16 @@
+[
+  {
+    "id": "final_proto",
+    "name": "Apex Grand Circuit",
+    "distance": 92,
+    "corners": 14,
+    "abcZones": 2,
+    "pitEntries": 1,
+    "type": "balanced",
+    "weatherOptions": [
+      "dry",
+      "damp",
+      "light_rain"
+    ]
+  }
+]
