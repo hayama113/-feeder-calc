@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#09090d" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Apex Signal Racing - PWA Prototype</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="assets/icons/asr-icon-180.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="app-header">
+      <img src="assets/icons/asr-icon-192.png" class="app-logo" alt="ASR" />
+      <div>
+        <h1 data-i18n="appTitle">Apex Signal Racing</h1>
+        <p data-i18n="subtitle">PWA Prototype v0.2.0</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="screen active" id="screen-home">
+        <div class="hero-card racing-home">
+          <div class="hero-content">
+            <img src="assets/icons/asr-icon-512.png" class="hero-logo" alt="ASR logo" />
+            <div class="hero-title">Apex Signal Racing</div>
+            <p class="muted">Spec Version: 0.2.0 / Build: Racing UI + Corner Tap</p>
+            <div class="signal-row" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            <button class="primary race-start-xl" data-nav="setup" data-i18n="raceStart">Race Start</button>
+            <div class="button-grid menu-compact">
+              <button data-nav="garage" data-i18n="garage">ガレージ</button>
+              <button data-nav="awards" data-i18n="awards">アワード</button>
+              <button data-nav="rankings" data-i18n="rankings">ランキング</button>
+              <button data-nav="settings" data-i18n="settings">設定</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-setup">
+        <h2 data-i18n="raceSetup">レース設定</h2>
+        <div class="panel">
+          <label><span data-i18n="mode">モード</span><select id="race-mode"><option value="1">1 Lap / 1周</option><option value="3">3 Laps / 3周</option></select></label>
+          <label><span data-i18n="difficulty">難易度</span><select id="difficulty"><option value="B">B License</option><option value="A">A License</option><option value="S">S License</option></select></label>
+          <label><span data-i18n="weather">天候</span><select id="weather-select"><option value="dry">Dry / ドライ</option><option value="damp">Damp / ダンプ</option><option value="light_rain">Light Rain / 小雨</option></select></label>
+          <button class="primary" id="to-tyres" data-i18n="tyreStrategy">タイヤ戦略</button>
+          <button data-nav="home" data-i18n="back">戻る</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-garage">
+        <h2 data-i18n="garage">ガレージ</h2>
+        <div id="team-list" class="team-list"></div>
+        <button data-nav="home" data-i18n="back">戻る</button>
+      </section>
+
+      <section class="screen" id="screen-tyres">
+        <h2 data-i18n="tyreStrategy">タイヤ戦略</h2>
+        <p class="muted">3セット登録。決勝直前まで変更可能。</p>
+        <div id="tyre-selectors" class="panel"></div>
+        <button class="primary" id="to-qualifying" data-i18n="startQualifying">予選開始</button>
+        <button data-nav="setup" data-i18n="back">戻る</button>
+      </section>
+
+      <section class="screen" id="screen-qualifying">
+        <h2 data-i18n="qualifying">予選</h2>
+        <div class="qualifying-hud"><span><span id="qual-time">15.0</span>s</span><span><span data-i18n="score">スコア</span>: <b id="qual-score">0</b></span><span>Combo: <b id="qual-combo">0</b></span></div>
+        <div id="qual-area" class="qual-area">
+          <div class="qual-start-wrap">
+            <div class="qual-start-card">
+              <div class="mini-lights"><span></span><span></span><span></span><span></span><span></span></div>
+              <p class="muted" data-i18n="qualifyingHelp">制限時間内に光る○をタップしてグリッドを決めます。</p>
+              <button id="qual-start" class="primary" data-i18n="startQualifying">予選開始</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-grid">
+        <h2>Starting Grid</h2>
+        <div id="grid-list" class="list"></div>
+        <div class="button-grid">
+          <button id="retry-qualifying-grid" data-i18n="retryQualifying">予選やり直し</button>
+          <button class="primary" id="grid-to-tyres">天候確認へ</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-weather">
+        <h2 data-i18n="weather">天候</h2>
+        <div id="weather-card" class="panel"></div>
+        <button id="weather-to-final" class="primary" data-i18n="finalCheck">最終確認</button>
+        <button data-nav="tyres" data-i18n="back">戻る</button>
+      </section>
+
+      <section class="screen" id="screen-final">
+        <h2 data-i18n="finalCheck">最終確認</h2>
+        <div id="final-card" class="panel"></div>
+        <div class="button-grid">
+          <button data-nav="tyres">Back to Tyres</button>
+          <button data-nav="weather">Back to Weather</button>
+          <button id="retry-qualifying-final" data-i18n="retryQualifying">予選やり直し</button>
+          <button id="race-start" class="primary" data-i18n="raceStart">Race Start</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-race">
+        <div class="race-hud">
+          <div><b id="hud-position">P-- / 22</b><br><small id="hud-event">Ready</small></div>
+          <div><span id="hud-weather">Dry</span><br><small id="hud-tyre">Tyre</small><br><small id="hud-events-left" class="event-count"></small></div>
+          <button id="pause-race" class="pause-button">Ⅱ</button>
+        </div>
+        <div id="progress-track" class="progress-track"></div>
+        <div id="race-view" class="race-view">
+          <div id="lights" class="lights"></div>
+          <div id="race-message" class="race-message">Ready</div>
+        </div>
+        <button id="tap-button" class="tap-button">TAP</button>
+      </section>
+
+      <section class="screen" id="screen-result">
+        <h2 data-i18n="result">リザルト</h2>
+        <div id="result-card" class="panel"></div>
+        <div class="button-grid">
+          <button id="continue-showcase" data-i18n="next">次へ</button>
+          <button id="retry-race">予選から再走</button>
+          <button data-nav="rankings" data-i18n="rankings">ランキング</button>
+          <button data-nav="awards" data-i18n="awards">アワード</button>
+          <button class="primary" data-nav="home">Home</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-showcase">
+        <div id="showcase-root" class="showcase"></div>
+      </section>
+
+      <section class="screen" id="screen-awards">
+        <h2 data-i18n="awards">アワード</h2>
+        <div id="awards-list" class="award-grid"></div>
+        <button data-nav="home" data-i18n="back">戻る</button>
+      </section>
+
+      <section class="screen" id="screen-rankings">
+        <h2 data-i18n="localRankings">ローカルランキング</h2>
+        <div class="tabs"><button data-rank-type="race">Race</button><button data-rank-type="time">Time</button><button data-rank-type="score">Score</button></div>
+        <div id="ranking-list" class="list"></div>
+        <button data-nav="home" data-i18n="back">戻る</button>
+      </section>
+
+      <section class="screen" id="screen-settings">
+        <h2 data-i18n="settings">設定</h2>
+        <div class="panel">
+          <label><span data-i18n="language">言語</span><select id="language-select"><option value="ja">日本語</option><option value="en">English</option></select></label>
+          <label><span data-i18n="volume">音量</span><input id="volume-range" type="range" min="0" max="1" step="0.05" /></label>
+          <label class="inline"><input id="mute-check" type="checkbox" /> <span data-i18n="mute">ミュート</span></label>
+          <p class="muted">Apex Signal Racing / PWA Prototype / Spec Version: 0.2.0 / Build: Racing UI + Corner Tap</p>
+          <button id="open-test-mode" data-i18n="testMode">テストモード</button>
+          <button id="reset-settings">設定リセット</button>
+          <button id="reset-rankings">ランキングリセット</button>
+          <button id="reset-awards">アワードリセット</button>
+          <button id="reset-last-result">直近リザルトリセット</button>
+          <button class="danger" id="reset-all">全データ初期化</button>
+          <button data-nav="home" data-i18n="back">戻る</button>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-test">
+        <h2>Test Mode / テストモード</h2>
+        <p class="muted">ランキング保存・アワード解除は行われません。Spec Version: 0.2.0</p>
+        <div id="test-checklist" class="checklist"></div>
+        <div class="button-grid">
+          <button id="reset-test-checks">チェックをリセット</button>
+          <button data-nav="home" data-i18n="back">戻る</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <div id="modal" class="modal hidden"><div class="modal-card"><p id="modal-text"></p><div class="modal-actions"><button id="modal-cancel" data-i18n="cancel">キャンセル</button><button id="modal-ok" class="primary" data-i18n="ok">OK</button></div></div></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
